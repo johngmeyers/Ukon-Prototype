@@ -8,6 +8,7 @@ from typer.testing import CliRunner
 
 from coverage_readiness import cli
 from coverage_readiness.llm.client import FakeLLMClient
+from coverage_readiness.llm.mapper import APPLICATION_PROMPT
 from coverage_readiness.schema import ControlId
 
 BIRCH = Path(__file__).parent.parent / "fixtures" / "businesses" / "birch_logistics"
@@ -95,7 +96,7 @@ def test_check_birch_writes_contradictions_first(fake, tmp_path):
     [log] = (tmp_path / "runs").glob("*.jsonl")
     records = [json.loads(line) for line in log.read_text().splitlines()]
     assert [r["prompt_version"] for r in records] == [
-        "map_application_v1",
+        APPLICATION_PROMPT,
         "map_evidence_notes_v1",
         "map_evidence_notes_v1",
     ]

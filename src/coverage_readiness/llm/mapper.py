@@ -16,7 +16,7 @@ from coverage_readiness.schema import (
 )
 
 PROMPTS = Path(__file__).parent / "prompts"
-APPLICATION_PROMPT = "map_application_v1"
+APPLICATION_PROMPT = "map_application_v2"
 NOTES_PROMPT = "map_evidence_notes_v1"
 
 
