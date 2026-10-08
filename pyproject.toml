@@ -38,10 +38,11 @@ src = ["src", "tests"]
 select = ["E", "F", "I", "B", "UP", "SIM"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["coverage_readiness"]
+known-first-party = ["coverage_readiness", "evals"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
 addopts = "-m 'not live'"
 markers = [
     "live: calls the real Anthropic API; run with `pytest -m live`",
