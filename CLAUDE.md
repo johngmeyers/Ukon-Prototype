@@ -9,6 +9,7 @@ coverage-readiness compares a business's cyber insurance application answers aga
 - Anthropic SDK for the LLM; Typer for the CLI.
 
 ## Commands
+- `uv run coverage-readiness check fixtures/businesses/acme_dental --carrier carrier_a` — readiness report (calls the API; logs to `runs/`)
 - `uv run pytest` — unit tests (live tests excluded by default)
 - `uv run pytest -m live` — the live API test; reads ANTHROPIC_API_KEY from `.env` (see `.env.example`)
 - `uv run ruff check . && uv run ruff format --check .`
