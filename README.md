@@ -191,7 +191,9 @@ The same 16 scenarios and v2 prompts on three models, 2 runs each:
 | Cost per application | $0.052 | **$0.026** | **$0.0016** |
 | Latency per application (p50) | 16.1s / 16.4s | **9.3s / 9.2s** | 11.6s / 12.3s |
 
-All three catch every contradiction on this set. **Sonnet 5.5 made no mistakes**, at half Opus's cost and about 45% faster, so it's the default. Opus missed only the known USB-rotation note. **Haiku 5.5 is about 30× cheaper than Opus**, but it read the vague answer "We back up to the cloud" as a confident "no" in both runs instead of sending it to review. That's harmless here, but it's the overconfidence on vague wording that this domain can't afford. Full results: [Sonnet](evals/results/2026-10-08-v2-sonnet-5-5.md), [Haiku](evals/results/2026-10-08-v2-haiku-5-5.md).
+All three catch every contradiction on this set. **Sonnet 5.5 made no mistakes**, at half Opus's cost and about 45% faster, so it's the default. Opus missed only the known USB-rotation note. **Haiku 5.5 is about 30× cheaper than Opus**, but it read the vague answer "We back up to the cloud" as a confident "no" in both runs instead of sending it to review. That's harmless here, because the evidence showed backups in place. Full results: [Sonnet](evals/results/2026-10-08-v2-sonnet-5-5.md), [Haiku](evals/results/2026-10-08-v2-haiku-5-5.md).
+
+**The evals picked the model.** Sonnet 5.5 beat Opus 5.5 on accuracy at half the cost. Haiku 5.5 was 30× cheaper but overconfident on vague answers, which is exactly what this domain can't afford. With Sonnet as the default, a check takes about 10 seconds instead of 15 and costs about 2.5¢.
 
 ## Development
 
