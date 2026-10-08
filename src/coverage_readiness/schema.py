@@ -62,12 +62,12 @@ CONTROLS: dict[ControlId, ControlSpec] = {
     ControlId.BACKUPS_OFFLINE_IMMUTABLE: ControlSpec(
         description="At least one backup copy is offline, air-gapped or immutable.",
         kind=ValueKind.BOOL,
-        evidence_sources=("backup_log",),
+        evidence_sources=("backup_log", "msp_notes"),
     ),
     ControlId.BACKUP_RESTORE_TESTED: ControlSpec(
         description="A restore from backup was tested successfully in the last 12 months.",
         kind=ValueKind.BOOL,
-        evidence_sources=("backup_log",),
+        evidence_sources=("backup_log", "msp_notes"),
     ),
     ControlId.CRITICAL_PATCH_DAYS: ControlSpec(
         description="Critical security patches are deployed within this many days of release.",
@@ -111,6 +111,9 @@ class EvidencedControl(BaseModel):
     value: bool | int | float | None
     source: str = Field(description="Evidence file or system, e.g. 'edr_inventory.json'")
     detail: str = Field(description="Human-readable summary, e.g. 'EDR active on 47 of 50'")
+    # Set only for evidence read by the LLM from free text. Parsers leave both as None.
+    confidence: float | None = Field(default=None, ge=0.0, le=1.0)
+    source_quote: str | None = None
 
 
 class FindingStatus(StrEnum):
