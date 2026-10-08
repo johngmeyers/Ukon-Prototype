@@ -349,10 +349,8 @@ def main(
 ) -> None:
     load_dotenv()
     scenarios = [s for s in load_scenarios() if not only or only in s.id]
-    if label is None:
-        label = application_prompt.rsplit("_", 1)[-1]
-        if model != config.MODEL:
-            label += "-" + model.removeprefix("claude-")
+    # e.g. "v2-sonnet-5-5"; the model is always named so results never overwrite each other.
+    label = label or f"{application_prompt.rsplit('_', 1)[-1]}-{model.removeprefix('claude-')}"
     stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
     client = AnthropicClient(model)
 

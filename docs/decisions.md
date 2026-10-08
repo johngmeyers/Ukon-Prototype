@@ -44,8 +44,16 @@ Short records of the main design decisions: the context, the decision, and what 
 
 ## 6. Schema-constrained output instead of forced tool use
 
-**Context.** The plan called for forced tool use at temperature 0. Claude Opus 5.5 rejects both a forced `tool_choice` and `temperature`.
+**Context.** The plan called for forced tool use at temperature 0. Claude Opus 5.5 and Sonnet 5.5 reject both a forced `tool_choice` and `temperature`.
 
 **Decision.** Use structured outputs: a JSON schema generated from the Pydantic model, which constrains the reply. Validate every reply with Pydantic, retry once with the validation error, then fail loudly. Log every attempt. Server-side refusal fallback is on, and the log records which model actually answered.
 
 **Consequences.** One schema still drives the request, validation and tests. Numeric bounds such as confidence 0–1 aren't enforced by the API's schema, so Pydantic enforces them and the retry handles violations. Without temperature control, consistency is measured instead: status stability across eval runs was 99% on v1 and 100% on v2.
+
+## 7. Sonnet 5.5 is the default model, chosen by eval
+
+**Context.** The prototype started on Claude Opus 5.5 at $0.052 per application. The LLM's job here is narrow (extract fields from short text), so a cheaper model might do as well.
+
+**Decision.** Run the same 16 scenarios and v2 prompts on Opus 5.5, Sonnet 5.5 and Haiku 5.5, 2 runs each, and pick from the data. Sonnet 5.5 had 100% recall, precision and status accuracy in both runs, at $0.026 per application and a 9.3s median, against Opus's 99.4%, $0.052 and 16.1s. Haiku 5.5 also had 100% recall at $0.0016, but it read a vague answer ("We back up to the cloud") as a confident "no" in both runs instead of sending it to review.
+
+**Consequences.** Half the cost and faster demos, with no measured quality loss. `--model` switches per run, and eval result names always include the model. Haiku's overconfidence on vague wording is the case to fix (for example with quote verification) before trading accuracy for its 30× lower cost.

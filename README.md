@@ -14,19 +14,19 @@ cp .env.example .env          # then set ANTHROPIC_API_KEY
 uv run coverage-readiness check fixtures/businesses/cedar_law --carrier carrier_a
 ```
 
-Three synthetic businesses are included: `acme_dental` (clean), `birch_logistics` (EDR gap and untested backups) and `cedar_law` (claims MFA on the VPN; the VPN has none). Each can be checked against `carrier_a` or `carrier_b`. A run makes 3 LLM calls and costs about $0.05.
+Three synthetic businesses are included: `acme_dental` (clean), `birch_logistics` (EDR gap and untested backups) and `cedar_law` (claims MFA on the VPN; the VPN has none). Each can be checked against `carrier_a` or `carrier_b`. A run makes 3 LLM calls and costs about $0.025.
 
 Output for `cedar_law` (excerpt):
 
 ```
 As of 2026-10-08 · 1 contradicted · 0 needs review · 2 unverifiable · 7 supported
-LLM: 3 calls (0 retries) · 7,194 tokens · $0.051 · 14.8s · claude-opus-5-5
+LLM: 3 calls (0 retries) · 7,071 tokens · $0.024 · 10.2s · claude-sonnet-5-5
 
 Contradicted (1)
   MFA on remote access
     Claim     yes "Yes, MFA is required for email and VPN." (a2, conf 0.95)
-    Evidence  SonicWall SSL-VPN on local firewall accounts with no MFA; Duo quote still
-              awaiting approval. (msp_notes.txt, conf 0.95) "No MFA on the VPN yet."
+    Evidence  SonicWall SSL-VPN uses local firewall accounts with no MFA; Duo quote still
+              pending approval. (msp_notes.txt, conf 0.97) "No MFA on the VPN yet."
     Why       The application says this is in place; the evidence shows it isn't.
 ```
 
@@ -77,7 +77,7 @@ Orange steps call the LLM; blue steps are plain code.
 4. **Needs review:** evidence sources disagree with each other
 5. **Supported or contradicted:** "all endpoints" means 100%, patch days are a ceiling, and an under-reported control is supported with a note
 
-LLM calls use Claude Opus 5.5 with schema-constrained structured output. Every reply is validated with Pydantic, retried once with the validation error, and then fails loudly. Prompts are versioned files in [`llm/prompts/`](src/coverage_readiness/llm/prompts/).
+LLM calls use Claude Sonnet 5.5 by default, chosen by the [model comparison](#model-comparison) below, with schema-constrained structured output. Every reply is validated with Pydantic, retried once with the validation error, and then fails loudly. Prompts are versioned files in [`llm/prompts/`](src/coverage_readiness/llm/prompts/).
 
 ## Seed data
 
@@ -159,7 +159,7 @@ Different wording, and combined questions: `b1` covers all three MFA controls an
 
 16 labeled scenarios: 4 clean, 5 single contradictions, 3 ambiguous answers, 2 where Carrier B's combined question hides a split, 1 under-reporting, and 1 prompt injection. The harness scores two places, so a mapping miss can be told apart from a rule miss: the claim value per field, and the final status per control.
 
-| Metric (2 runs each) | v1 prompt | v2 prompt |
+| Metric (2 runs each, Opus 5.5) | v1 prompt | v2 prompt |
 |---|---|---|
 | Mapping accuracy | 98% / 98% | **100% / 100%** |
 | Status accuracy | 98% / 97% | **99% / 99%** |
@@ -172,7 +172,7 @@ Different wording, and combined questions: `b1` covers all three MFA controls an
 The v1 baseline sent two real gaps to needs review instead of contradicted, because it read plain or general "yes" answers too cautiously. v2 changed only the prompt. The ambiguous scenarios, which still go to review, guard against making it too eager. Full results: [v1](evals/results/2026-10-08-v1.md), [v2](evals/results/2026-10-08-v2.md).
 
 ```bash
-uv run python evals/run_evals.py --runs 2                      # current prompt, about $1.70
+uv run python evals/run_evals.py --runs 2                      # current prompt and model, about $0.85
 uv run python evals/run_evals.py --application-prompt map_application_v1 --label v1-rerun
 uv run python evals/run_evals.py --model claude-haiku-5-5          # compare another model
 ```
@@ -181,7 +181,7 @@ uv run python evals/run_evals.py --model claude-haiku-5-5          # compare ano
 
 The same 16 scenarios and v2 prompts on three models, 2 runs each:
 
-| Metric (2 runs) | Opus 5.5 (default) | Sonnet 5.5 | Haiku 5.5 |
+| Metric (2 runs) | Opus 5.5 | Sonnet 5.5 (default) | Haiku 5.5 |
 |---|---|---|---|
 | Contradiction recall | 100% / 100% | 100% / 100% | 100% / 100% |
 | Contradiction precision | 100% / 100% | 100% / 100% | 100% / 100% |
@@ -191,7 +191,7 @@ The same 16 scenarios and v2 prompts on three models, 2 runs each:
 | Cost per application | $0.052 | **$0.026** | **$0.0016** |
 | Latency per application (p50) | 16.1s / 16.4s | **9.3s / 9.2s** | 11.6s / 12.3s |
 
-All three catch every contradiction on this set. **Sonnet 5.5 made no mistakes**, at half Opus's cost and about 45% faster. Opus missed only the known USB-rotation note. **Haiku 5.5 is about 30× cheaper than Opus**, but it read the vague answer "We back up to the cloud" as a confident "no" in both runs instead of sending it to review. That's harmless here, but it's the overconfidence on vague wording that this domain can't afford. Full results: [Sonnet](evals/results/2026-10-08-v2-sonnet-5-5.md), [Haiku](evals/results/2026-10-08-v2-haiku-5-5.md).
+All three catch every contradiction on this set. **Sonnet 5.5 made no mistakes**, at half Opus's cost and about 45% faster, so it's the default. Opus missed only the known USB-rotation note. **Haiku 5.5 is about 30× cheaper than Opus**, but it read the vague answer "We back up to the cloud" as a confident "no" in both runs instead of sending it to review. That's harmless here, but it's the overconfidence on vague wording that this domain can't afford. Full results: [Sonnet](evals/results/2026-10-08-v2-sonnet-5-5.md), [Haiku](evals/results/2026-10-08-v2-haiku-5-5.md).
 
 ## Development
 

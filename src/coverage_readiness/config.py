@@ -1,8 +1,10 @@
 """Settings for LLM calls. Change the model here, never inline."""
 
-MODEL = "claude-opus-5-5"
-# Opus 5.5 rejects `temperature` and forced `tool_choice`; schema-constrained output plus
-# Pydantic validation is how we get consistent, typed results instead.
+# Chosen by the model comparison in evals/results: same recall as Opus 5.5 with no misses,
+# at half the cost and about 45% faster. Override per run with --model.
+MODEL = "claude-sonnet-5-5"
+# Current models reject `temperature` and forced `tool_choice`; schema-constrained output
+# plus Pydantic validation is how we get consistent, typed results instead.
 EFFORT = "medium"
 MAX_TOKENS = 16000
 

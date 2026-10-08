@@ -8,6 +8,7 @@ from types import SimpleNamespace
 import pytest
 import yaml
 
+from coverage_readiness import config
 from coverage_readiness.llm.client import (
     AnthropicClient,
     FakeLLMClient,
@@ -266,7 +267,7 @@ def test_anthropic_client_sends_schema_constrained_request():
 
     assert response.text == "{}"
     assert (response.input_tokens, response.output_tokens) == (120, 30)
-    assert captured["model"] == "claude-opus-5-5"
+    assert captured["model"] == config.MODEL
     assert captured["output_config"]["format"] == {
         "type": "json_schema",
         "schema": {"type": "object"},
