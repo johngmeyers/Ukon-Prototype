@@ -53,4 +53,6 @@ def test_application_answers_every_carrier_question_once(business, carrier):
     assert app["carrier"] == carrier
     answered = [a["question_id"] for a in app["answers"]]
     assert answered == question_ids(carrier)
-    assert all(str(a["answer"]).strip() for a in app["answers"])
+    # Bare YAML `Yes`/`No`/`30` load as bool/int; answers must stay as the applicant's words.
+    for a in app["answers"]:
+        assert isinstance(a["answer"], str) and a["answer"].strip(), a["question_id"]
