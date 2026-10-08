@@ -30,7 +30,7 @@ Contradicted (1)
     Why       The application says this is in place; the evidence shows it isn't.
 ```
 
-The report lists contradictions first, then needs review, unverifiable and supported. Add `--output report.md` to save the markdown. Every LLM call is logged to `runs/<date>.jsonl` with model, prompt version, tokens, cost and latency.
+The report lists contradictions first, then needs review, unverifiable and supported. Add `--output report.md` to save the markdown, or `--model claude-sonnet-5-5` to use another model. Every LLM call is logged to `runs/<date>.jsonl` with model, prompt version, tokens, cost and latency.
 
 ## Architecture
 
@@ -174,12 +174,29 @@ The v1 baseline sent two real gaps to needs review instead of contradicted, beca
 ```bash
 uv run python evals/run_evals.py --runs 2                      # current prompt, about $1.70
 uv run python evals/run_evals.py --application-prompt map_application_v1 --label v1-rerun
+uv run python evals/run_evals.py --model claude-haiku-5-5          # compare another model
 ```
+
+### Model comparison
+
+The same 16 scenarios and v2 prompts on three models, 2 runs each:
+
+| Metric (2 runs) | Opus 5.5 (default) | Sonnet 5.5 | Haiku 5.5 |
+|---|---|---|---|
+| Contradiction recall | 100% / 100% | 100% / 100% | 100% / 100% |
+| Contradiction precision | 100% / 100% | 100% / 100% | 100% / 100% |
+| Status accuracy | 99.4% / 99.4% | **100% / 100%** | 98.8% / 98.8% |
+| Review rate | 3.1% / 3.1% | 2.5% / 2.5% | 2.5% / 2.5% |
+| Status stability across runs | 100% | 100% | 98.8% |
+| Cost per application | $0.052 | **$0.026** | **$0.0016** |
+| Latency per application (p50) | 16.1s / 16.4s | **9.3s / 9.2s** | 11.6s / 12.3s |
+
+All three catch every contradiction on this set. **Sonnet 5.5 made no mistakes**, at half Opus's cost and about 45% faster. Opus missed only the known USB-rotation note. **Haiku 5.5 is about 30× cheaper than Opus**, but it read the vague answer "We back up to the cloud" as a confident "no" in both runs instead of sending it to review. That's harmless here, but it's the overconfidence on vague wording that this domain can't afford. Full results: [Sonnet](evals/results/2026-10-08-v2-sonnet-5-5.md), [Haiku](evals/results/2026-10-08-v2-haiku-5-5.md).
 
 ## Development
 
 ```bash
-uv run pytest              # 115 unit tests, no network (fake LLM client)
+uv run pytest              # 118 unit tests, no network (fake LLM client)
 uv run pytest -m live      # one real API call
 uv run ruff check . && uv run ruff format --check .
 ```
