@@ -1,0 +1,24 @@
+# Synthetic question set written for this prototype. One question per control.
+carrier: carrier_a
+name: Carrier A (synthetic)
+questions:
+  - id: a1
+    text: Is multi-factor authentication required for every user to access company email, including webmail and mobile apps?
+  - id: a2
+    text: Is multi-factor authentication required for all remote access to your network, such as VPN or Remote Desktop (RDP)?
+  - id: a3
+    text: Is multi-factor authentication enforced on all administrator and other privileged accounts?
+  - id: a4
+    text: Is an endpoint detection and response (EDR) product installed on all endpoints? Please name the product.
+  - id: a5
+    text: Do you keep at least one copy of your backups offline, air-gapped or immutable?
+  - id: a6
+    text: Have you successfully restored data from backup as a test within the last 12 months?
+  - id: a7
+    text: Within how many days of release are critical security patches applied?
+  - id: a8
+    text: Do you use an email filtering or secure email gateway product?
+  - id: a9
+    text: Do all employees complete security awareness training at least once a year?
+  - id: a10
+    text: Do you have a written incident response plan?

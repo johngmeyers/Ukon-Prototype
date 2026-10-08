@@ -1,0 +1,7 @@
+Acme Dental - MSP account notes (last updated 2026-09-20, J. Ortiz)
+
+Remote access: FortiClient VPN on the FortiGate 60F. VPN login is SAML to Entra ID, and the Conditional Access policy "Require MFA - VPN" applies to all users. Checked the sign-in logs on 9/18 and every VPN session shows MFA satisfied. RDP is not exposed to the internet; port 3389 is closed at the firewall.
+
+Email: Defender for Office 365 Plan 1 is licensed for every mailbox. Safe Links and Safe Attachments policies are on and set to block.
+
+Other: Dr. Patel asked about adding a second NAS. Quoted 9/12, waiting to hear back.

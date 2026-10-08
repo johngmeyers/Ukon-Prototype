@@ -1,0 +1,25 @@
+business: cedar_law
+carrier: carrier_a
+completed_by: Firm administrator
+date: 2026-09-30
+answers:
+  - question_id: a1
+    answer: Yes, MFA is required for email and VPN.
+  - question_id: a2
+    answer: Yes, MFA is required for email and VPN.
+  - question_id: a3
+    answer: Yes, admins use MFA.
+  - question_id: a4
+    answer: Yes. Microsoft Defender for Endpoint on all devices.
+  - question_id: a5
+    answer: Yes, Acronis immutable cloud backups.
+  - question_id: a6
+    answer: Yes, we did a full test restore in March 2026.
+  - question_id: a7
+    answer: Within 14 days.
+  - question_id: a8
+    answer: Yes, Proofpoint.
+  - question_id: a9
+    answer: Yes, annual training through KnowBe4.
+  - question_id: a10
+    answer: Yes

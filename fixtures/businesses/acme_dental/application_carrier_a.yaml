@@ -1,0 +1,25 @@
+business: acme_dental
+carrier: carrier_a
+completed_by: Office manager, with the MSP on the phone
+date: 2026-09-30
+answers:
+  - question_id: a1
+    answer: Yes. Everyone uses the Microsoft Authenticator app for Outlook, including on their phones.
+  - question_id: a2
+    answer: Yes. The VPN requires MFA through Microsoft, and we don't allow RDP from outside.
+  - question_id: a3
+    answer: Yes, both admin accounts require MFA.
+  - question_id: a4
+    answer: Yes, SentinelOne is on every computer and both servers.
+  - question_id: a5
+    answer: Yes. We keep an immutable copy in Wasabi cloud storage in addition to the local NAS.
+  - question_id: a6
+    answer: Yes. Our MSP did a full test restore of the server in June 2026.
+  - question_id: a7
+    answer: 14 days
+  - question_id: a8
+    answer: Yes, Microsoft Defender for Office 365.
+  - question_id: a9
+    answer: Yes, everyone does annual training.
+  - question_id: a10
+    answer: Yes, we have a written plan.

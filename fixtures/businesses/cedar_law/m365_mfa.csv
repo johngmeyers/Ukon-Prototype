@@ -1,0 +1,21 @@
+UserPrincipalName,DisplayName,IsAdmin,MFAStatus,DefaultMethod
+ana.lopez@cedarlaw.example,Ana Lopez,False,Enforced,PhoneAppOTP
+ben.kim@cedarlaw.example,Ben Kim,False,Enforced,PhoneAppNotification
+cara.patel@cedarlaw.example,Cara Patel,False,Enforced,PhoneAppNotification
+dev.nguyen@cedarlaw.example,Dev Nguyen,False,Enforced,PhoneAppOTP
+eli.smith@cedarlaw.example,Eli Smith,False,Enforced,PhoneAppNotification
+fay.garcia@cedarlaw.example,Fay Garcia,False,Enforced,PhoneAppNotification
+gus.chen@cedarlaw.example,Gus Chen,False,Enforced,PhoneAppOTP
+hana.okafor@cedarlaw.example,Hana Okafor,False,Enforced,PhoneAppNotification
+ivan.brown@cedarlaw.example,Ivan Brown,False,Enforced,PhoneAppNotification
+jo.rossi@cedarlaw.example,Jo Rossi,False,Enforced,PhoneAppOTP
+kai.lopez@cedarlaw.example,Kai Lopez,False,Enforced,PhoneAppNotification
+lena.kim@cedarlaw.example,Lena Kim,False,Enforced,PhoneAppNotification
+max.patel@cedarlaw.example,Max Patel,False,Enforced,PhoneAppOTP
+nia.nguyen@cedarlaw.example,Nia Nguyen,False,Enforced,PhoneAppNotification
+omar.smith@cedarlaw.example,Omar Smith,False,Enforced,PhoneAppNotification
+pia.garcia@cedarlaw.example,Pia Garcia,False,Enforced,PhoneAppOTP
+quinn.chen@cedarlaw.example,Quinn Chen,False,Enforced,PhoneAppNotification
+ravi.okafor@cedarlaw.example,Ravi Okafor,False,Enforced,PhoneAppNotification
+admin@cedarlaw.example,Cedar Admin,True,Enforced,PhoneAppNotification
+msp-admin@cedarlaw.example,MSP Admin,True,Enforced,PhoneAppNotification

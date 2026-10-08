@@ -1,0 +1,357 @@
+{
+  "vendor": "CrowdStrike Falcon",
+  "exported_at": "2026-09-28T14:00:00",
+  "device_count": 50,
+  "devices": [
+    {
+      "hostname": "BIRCH-SRV01",
+      "os": "Windows Server 2022",
+      "device_type": "server",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T13:00:00"
+    },
+    {
+      "hostname": "BIRCH-SRV02",
+      "os": "Windows Server 2022",
+      "device_type": "server",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T12:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS03",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T11:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS04",
+      "os": "Windows 11 Pro",
+      "device_type": "desktop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T10:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS05",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T09:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS06",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T08:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS07",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T07:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS08",
+      "os": "Windows 11 Pro",
+      "device_type": "desktop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T06:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS09",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T05:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS10",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T04:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS11",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T03:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS12",
+      "os": "Windows 11 Pro",
+      "device_type": "desktop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T02:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS13",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T01:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS14",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T00:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS15",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-27T23:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS16",
+      "os": "Windows 11 Pro",
+      "device_type": "desktop",
+      "agent_status": "active",
+      "last_seen": "2026-09-27T22:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS17",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "not_installed",
+      "last_seen": null
+    },
+    {
+      "hostname": "BIRCH-WS18",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-27T20:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS19",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-27T19:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS20",
+      "os": "Windows 11 Pro",
+      "device_type": "desktop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T14:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS21",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T13:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS22",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T12:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS23",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T11:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS24",
+      "os": "Windows 11 Pro",
+      "device_type": "desktop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T10:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS25",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T09:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS26",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T08:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS27",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T07:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS28",
+      "os": "Windows 11 Pro",
+      "device_type": "desktop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T06:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS29",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T05:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS30",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T04:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS31",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T03:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS32",
+      "os": "Windows 11 Pro",
+      "device_type": "desktop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T02:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS33",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "not_installed",
+      "last_seen": null
+    },
+    {
+      "hostname": "BIRCH-WS34",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T00:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS35",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-27T23:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS36",
+      "os": "Windows 11 Pro",
+      "device_type": "desktop",
+      "agent_status": "active",
+      "last_seen": "2026-09-27T22:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS37",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-27T21:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS38",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-27T20:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS39",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-27T19:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS40",
+      "os": "Windows 11 Pro",
+      "device_type": "desktop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T14:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS41",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "sensor_offline",
+      "last_seen": "2026-08-18T14:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS42",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T12:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS43",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T11:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS44",
+      "os": "Windows 11 Pro",
+      "device_type": "desktop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T10:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS45",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T09:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS46",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T08:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS47",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T07:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS48",
+      "os": "Windows 11 Pro",
+      "device_type": "desktop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T06:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS49",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T05:00:00"
+    },
+    {
+      "hostname": "BIRCH-WS50",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T04:00:00"
+    }
+  ]
+}

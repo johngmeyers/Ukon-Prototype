@@ -1,0 +1,14 @@
+Datto SIRIS - backup activity report
+Client: Birch Logistics   Range: 2025-10-01 to 2026-09-28   Generated: 2026-09-28 13:55
+
+2026-09-28 00:30:05  AGENT=BIRCH-SRV01  TYPE=Incremental  DEST=siris-local  STATUS=Success
+2026-09-28 02:10:44  AGENT=BIRCH-SRV01  TYPE=OffsiteSync  DEST=datto-cloud    STATUS=Success
+2026-09-27 00:30:02  AGENT=BIRCH-SRV02  TYPE=Incremental  DEST=siris-local  STATUS=Success
+2026-09-26 17:05:19  TYPE=UsbRotation   DEST=usb-offline-B (removed and stored offsite)  STATUS=Success
+2026-09-19 17:04:51  TYPE=UsbRotation   DEST=usb-offline-A (removed and stored offsite)  STATUS=Success
+2026-09-12 17:06:02  TYPE=UsbRotation   DEST=usb-offline-B (removed and stored offsite)  STATUS=Success
+2026-08-03 00:30:11  AGENT=BIRCH-SRV02  TYPE=Incremental  DEST=siris-local  STATUS=Failed  ERROR=VSS snapshot timeout
+2026-08-04 00:30:08  AGENT=BIRCH-SRV02  TYPE=Incremental  DEST=siris-local  STATUS=Success
+
+Screenshot verifications: disabled
+Restore activity in range: none

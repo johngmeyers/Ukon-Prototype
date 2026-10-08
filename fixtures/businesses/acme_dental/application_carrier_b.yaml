@@ -1,0 +1,19 @@
+business: acme_dental
+carrier: carrier_b
+completed_by: Office manager, with the MSP on the phone
+date: 2026-09-30
+answers:
+  - question_id: b1
+    answer: MFA is required for email for all staff, for the VPN (it signs in through Microsoft), and for both admin accounts. RDP isn't open to the internet.
+  - question_id: b2
+    answer: SentinelOne, on 100% of our computers and servers.
+  - question_id: b3
+    answer: Nightly backups to a local NAS plus an immutable cloud copy in Wasabi. The last full restore test was in June 2026 and it worked.
+  - question_id: b4
+    answer: Within 14 days.
+  - question_id: b5
+    answer: Yes, Defender for Office 365 scans links and attachments.
+  - question_id: b6
+    answer: Yes, once a year for all staff.
+  - question_id: b7
+    answer: Yes, we have a written incident response plan.

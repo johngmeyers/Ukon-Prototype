@@ -1,0 +1,8 @@
+patch_id,product,severity,released,deployed
+KB5041585,Windows 11,Critical,2026-06-09,2026-06-23
+KB5041580,Windows Server 2022,Critical,2026-06-09,2026-06-30
+CHR-126.0,Google Chrome,Critical,2026-06-25,2026-06-30
+KB5042421,Windows 11,Important,2026-07-14,2026-08-13
+KB5043076,Windows 11,Critical,2026-08-11,2026-08-29
+KB5043050,Windows Server 2022,Critical,2026-08-11,2026-08-31
+KB5044285,Windows 11,Critical,2026-09-08,2026-09-20

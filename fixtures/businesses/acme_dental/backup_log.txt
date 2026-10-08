@@ -1,0 +1,11 @@
+Veeam Backup & Replication - job history excerpt
+Tenant: Acme Dental   Exported: 2026-09-28 14:02 by msp-admin
+
+2026-09-27 01:00:12  JOB=Nightly-SRV01        TARGET=local-nas01                STATUS=Success  SIZE=212 GB
+2026-09-27 03:15:40  JOB=Offsite-Copy-SRV01   TARGET=wasabi-acme (immutable, object lock 30d)  STATUS=Success  SIZE=212 GB
+2026-09-26 01:00:09  JOB=Nightly-SRV01        TARGET=local-nas01                STATUS=Success  SIZE=211 GB
+2026-09-26 03:14:58  JOB=Offsite-Copy-SRV01   TARGET=wasabi-acme (immutable, object lock 30d)  STATUS=Success  SIZE=211 GB
+2026-09-25 01:00:11  JOB=Nightly-SRV01        TARGET=local-nas01                STATUS=Warning  SIZE=211 GB  NOTE=1 file skipped (locked)
+2026-09-25 03:16:21  JOB=Offsite-Copy-SRV01   TARGET=wasabi-acme (immutable, object lock 30d)  STATUS=Success  SIZE=211 GB
+2026-06-12 10:22:01  RESTORE-TEST  Full VM restore of SRV01 to isolated sandbox  STATUS=Success  VERIFIED_BY=msp (practice software opened, patient records spot-checked)
+2026-01-15 09:40:33  RESTORE-TEST  File-level restore of \\SRV01\Imaging\2025-12  STATUS=Success  VERIFIED_BY=msp
