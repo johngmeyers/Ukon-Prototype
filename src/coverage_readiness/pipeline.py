@@ -9,7 +9,7 @@ import yaml
 
 from coverage_readiness.compare import compare_all
 from coverage_readiness.llm.client import LLMClient, RunLog
-from coverage_readiness.llm.mapper import map_application, read_evidence_notes
+from coverage_readiness.llm.mapper import APPLICATION_PROMPT, map_application, read_evidence_notes
 from coverage_readiness.parsers.edr import parse_edr_inventory
 from coverage_readiness.parsers.m365 import parse_m365_mfa
 from coverage_readiness.parsers.patches import parse_patches
@@ -45,13 +45,18 @@ def gather_evidence(
 
 
 def assess(
-    business_dir: Path, carrier_path: Path, client: LLMClient, log: RunLog, as_of: date
+    business_dir: Path,
+    carrier_path: Path,
+    client: LLMClient,
+    log: RunLog,
+    as_of: date,
+    application_prompt: str = APPLICATION_PROMPT,
 ) -> Assessment:
     carrier = load_yaml(carrier_path)
     application = load_yaml(business_dir / f"application_{carrier['carrier']}.yaml")
     calls_before = len(log.read())
 
-    claims = map_application(client, carrier, application, log)
+    claims = map_application(client, carrier, application, log, application_prompt)
     evidence = gather_evidence(business_dir, client, log, as_of)
     return Assessment(
         business=business_dir.name,

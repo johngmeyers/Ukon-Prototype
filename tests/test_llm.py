@@ -247,3 +247,9 @@ def test_anthropic_client_sends_schema_constrained_request():
     }
     assert captured["fallbacks"] == "default"
     assert "temperature" not in captured and "tool_choice" not in captured
+
+
+def test_map_application_can_pin_an_older_prompt_version(log):
+    client = FakeLLMClient([claims_json()])
+    map_application(client, carrier(), application(), log, prompt_version="map_application_v1")
+    assert log.read()[0]["prompt_version"] == "map_application_v1"
