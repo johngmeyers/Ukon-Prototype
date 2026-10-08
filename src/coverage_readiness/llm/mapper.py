@@ -16,7 +16,7 @@ from coverage_readiness.schema import (
 )
 
 PROMPTS = Path(__file__).parent / "prompts"
-APPLICATION_PROMPT = "map_application_v1"
+APPLICATION_PROMPT = "map_application_v2"
 NOTES_PROMPT = "map_evidence_notes_v1"
 
 
@@ -69,9 +69,13 @@ def render_application(carrier: dict[str, Any], application: dict[str, Any]) -> 
 
 
 def map_application(
-    client: LLMClient, carrier: dict[str, Any], application: dict[str, Any], log: RunLog
+    client: LLMClient,
+    carrier: dict[str, Any],
+    application: dict[str, Any],
+    log: RunLog,
+    prompt_version: str = APPLICATION_PROMPT,
 ) -> list[ClaimedControl]:
-    prompt = load_prompt(APPLICATION_PROMPT, controls=describe_controls(list(ControlId)))
+    prompt = load_prompt(prompt_version, controls=describe_controls(list(ControlId)))
     mapping = call_structured(
         client,
         prompt=prompt,

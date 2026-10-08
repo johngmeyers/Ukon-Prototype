@@ -232,7 +232,11 @@ def stability(runs: list[list[dict]]) -> float | None:
 
 
 def run_once(
-    scenarios: list[Scenario], client: LLMClient, log_dir: Path, workers: int
+    scenarios: list[Scenario],
+    client: LLMClient,
+    log_dir: Path,
+    workers: int,
+    application_prompt: str = APPLICATION_PROMPT,
 ) -> list[dict]:
     with tempfile.TemporaryDirectory() as tmp:
 
@@ -241,7 +245,7 @@ def run_once(
             log = RunLog(log_dir / f"{scenario.id}.jsonl")
             carrier = FIXTURES / "carriers" / f"{scenario.carrier}.yaml"
             try:
-                assessment = assess(business, carrier, client, log, AS_OF)
+                assessment = assess(business, carrier, client, log, AS_OF, application_prompt)
                 return score_scenario(scenario, assessment, None)
             except Exception as e:  # a crashed scenario is scored as wrong, not fatal
                 return score_scenario(scenario, None, f"{type(e).__name__}: {e}")
@@ -250,13 +254,14 @@ def run_once(
             return list(pool.map(one, scenarios))
 
 
+def pct(value: float | None) -> str:
+    return "n/a" if value is None else f"{value:.0%}"
+
+
 def render_markdown(result: dict) -> str:
     runs = result["runs"]
     names = [f"Run {i + 1}" for i in range(len(runs))]
     m = [r["metrics"] for r in runs]
-
-    def pct(v):
-        return "n/a" if v is None else f"{v:.0%}"
 
     def row(label, values):
         return f"| {label} | " + " | ".join(values) + " |"
@@ -337,24 +342,26 @@ def main(
     workers: Annotated[int, typer.Option(help="Scenarios run in parallel.")] = 4,
     label: Annotated[str | None, typer.Option(help="Results name; default from prompt.")] = None,
     only: Annotated[str | None, typer.Option(help="Run scenarios whose id contains this.")] = None,
+    application_prompt: Annotated[
+        str, typer.Option(help="Prompt file stem, e.g. map_application_v1 to rerun the baseline.")
+    ] = APPLICATION_PROMPT,
 ) -> None:
     load_dotenv()
     scenarios = [s for s in load_scenarios() if not only or only in s.id]
-    label = label or APPLICATION_PROMPT.rsplit("_", 1)[-1]
+    label = label or application_prompt.rsplit("_", 1)[-1]
     stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
     client = AnthropicClient()
 
     all_runs = []
     for i in range(runs):
         typer.echo(f"Run {i + 1}/{runs}: {len(scenarios)} scenarios...")
-        scored = run_once(
-            scenarios, client, ROOT / "runs" / "evals" / stamp / f"run{i + 1}", workers
-        )
+        log_dir = ROOT / "runs" / "evals" / stamp / f"run{i + 1}"
+        scored = run_once(scenarios, client, log_dir, workers, application_prompt)
         all_runs.append(scored)
         m = metrics(scored)
         typer.echo(
-            f"  status {m['status_accuracy']:.0%} · mapping {m['mapping_accuracy']:.0%} · "
-            f"recall {m['contradiction_recall']:.0%} · ${m['cost_usd']:.2f}"
+            f"  status {pct(m['status_accuracy'])} · mapping {pct(m['mapping_accuracy'])} · "
+            f"recall {pct(m['contradiction_recall'])} · ${m['cost_usd']:.2f}"
         )
 
     result = {
@@ -363,7 +370,7 @@ def main(
             "date": date.today().isoformat(),
             "model": config.MODEL,
             "effort": config.EFFORT,
-            "prompts": {"application": APPLICATION_PROMPT, "notes": NOTES_PROMPT},
+            "prompts": {"application": application_prompt, "notes": NOTES_PROMPT},
             "thresholds": config.THRESHOLDS,
             "as_of": AS_OF.isoformat(),
             "scenarios": len(scenarios),

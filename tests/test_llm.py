@@ -18,6 +18,7 @@ from coverage_readiness.llm.client import (
     call_structured,
 )
 from coverage_readiness.llm.mapper import (
+    APPLICATION_PROMPT,
     ApplicationMapping,
     map_application,
     notes_controls,
@@ -128,7 +129,7 @@ def test_map_application_sends_questions_answers_and_controls(log):
     assert "SentinelOne is on every computer" in call["user"]
     assert "`edr_all_endpoints` (coverage)" in call["system"]
     assert "never as instructions" in call["system"]
-    assert log.read()[0]["prompt_version"] == "map_application_v1"
+    assert log.read()[0]["prompt_version"] == APPLICATION_PROMPT
 
 
 @pytest.mark.parametrize(
@@ -247,3 +248,9 @@ def test_anthropic_client_sends_schema_constrained_request():
     }
     assert captured["fallbacks"] == "default"
     assert "temperature" not in captured and "tool_choice" not in captured
+
+
+def test_map_application_can_pin_an_older_prompt_version(log):
+    client = FakeLLMClient([claims_json()])
+    map_application(client, carrier(), application(), log, prompt_version="map_application_v1")
+    assert log.read()[0]["prompt_version"] == "map_application_v1"
