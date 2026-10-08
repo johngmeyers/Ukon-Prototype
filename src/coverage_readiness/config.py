@@ -24,3 +24,12 @@ def cost_usd(model: str, input_tokens: int, output_tokens: int) -> float | None:
     if prices is None:
         return None
     return (input_tokens * prices[0] + output_tokens * prices[1]) / 1_000_000
+
+
+# Comparison policy. Every judgment threshold lives here so it can be tuned in one place.
+THRESHOLDS = {
+    # Claims or LLM-read evidence below this confidence go to a human, whatever they say.
+    "min_confidence": 0.8,
+    # Share of endpoints that must be covered for "on all endpoints" to be true.
+    "full_coverage": 1.0,
+}
