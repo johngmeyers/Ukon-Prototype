@@ -1,0 +1,7 @@
+description: An Acrobat critical patch took 25 days; the application claims 14.
+category: contradiction
+base: acme_dental
+carrier: carrier_a
+expected:
+  status:
+    critical_patch_days: contradicted

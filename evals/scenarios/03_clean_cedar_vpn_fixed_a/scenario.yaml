@@ -1,0 +1,7 @@
+description: Cedar Law after the MSP added Duo to the VPN. The remote-access claim is now true.
+category: clean
+base: cedar_law
+carrier: carrier_a
+expected:
+  status:
+    mfa_remote_access: supported

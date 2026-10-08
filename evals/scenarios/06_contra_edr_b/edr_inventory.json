@@ -1,0 +1,105 @@
+{
+  "vendor": "SentinelOne",
+  "exported_at": "2026-09-28T14:00:00",
+  "device_count": 14,
+  "devices": [
+    {
+      "hostname": "ACME-SRV01",
+      "os": "Windows Server 2022",
+      "device_type": "server",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T13:00:00"
+    },
+    {
+      "hostname": "ACME-SRV02",
+      "os": "Windows Server 2022",
+      "device_type": "server",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T12:00:00"
+    },
+    {
+      "hostname": "ACME-WS03",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T11:00:00"
+    },
+    {
+      "hostname": "ACME-WS04",
+      "os": "Windows 11 Pro",
+      "device_type": "desktop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T10:00:00"
+    },
+    {
+      "hostname": "ACME-WS05",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T09:00:00"
+    },
+    {
+      "hostname": "ACME-WS06",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T08:00:00"
+    },
+    {
+      "hostname": "ACME-WS07",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T07:00:00"
+    },
+    {
+      "hostname": "ACME-WS08",
+      "os": "Windows 11 Pro",
+      "device_type": "desktop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T06:00:00"
+    },
+    {
+      "hostname": "ACME-WS09",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "not_installed",
+      "last_seen": null
+    },
+    {
+      "hostname": "ACME-WS10",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T04:00:00"
+    },
+    {
+      "hostname": "ACME-WS11",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T03:00:00"
+    },
+    {
+      "hostname": "ACME-WS12",
+      "os": "Windows 11 Pro",
+      "device_type": "desktop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T02:00:00"
+    },
+    {
+      "hostname": "ACME-WS13",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T01:00:00"
+    },
+    {
+      "hostname": "ACME-WS14",
+      "os": "Windows 11 Pro",
+      "device_type": "laptop",
+      "agent_status": "active",
+      "last_seen": "2026-09-28T00:00:00"
+    }
+  ]
+}

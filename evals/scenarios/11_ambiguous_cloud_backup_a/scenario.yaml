@@ -1,0 +1,11 @@
+description: '"We back up to the cloud" says nothing about offline or immutable copies.'
+category: ambiguous
+base: acme_dental
+carrier: carrier_a
+answers:
+  a5: "We back up to the cloud."
+expected:
+  claims:
+    backups_offline_immutable: unscored
+  status:
+    backups_offline_immutable: needs_review
