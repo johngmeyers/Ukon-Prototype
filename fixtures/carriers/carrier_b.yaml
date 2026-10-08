@@ -1,0 +1,20 @@
+# Synthetic question set written for this prototype. Wording differs from Carrier A,
+# and several questions combine controls: b1 covers all three MFA controls, b3 covers
+# both backup controls.
+carrier: carrier_b
+name: Carrier B (synthetic)
+questions:
+  - id: b1
+    text: Describe where multi-factor authentication is enforced in your organization, including email, remote access (VPN/RDP) and administrative accounts.
+  - id: b2
+    text: What endpoint protection or EDR tool do you use, and what share of your laptops, desktops and servers does it cover?
+  - id: b3
+    text: Describe your backup approach, including whether any copy is kept offline or immutable and when you last tested a full restore.
+  - id: b4
+    text: What is your target timeframe for deploying critical patches?
+  - id: b5
+    text: Are inbound emails scanned for malicious links and attachments before they reach users?
+  - id: b6
+    text: Is phishing or security awareness training provided to staff? If so, how often?
+  - id: b7
+    text: Is there a documented plan for responding to a cyber incident?

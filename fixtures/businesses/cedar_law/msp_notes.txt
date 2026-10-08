@@ -1,0 +1,9 @@
+Cedar Law - client notes (M. Reyes, updated 2026-09-22)
+
+Remote access: partners work from home over the SonicWall TZ470 SSL-VPN. Logins use local user accounts on the firewall. No MFA on the VPN yet. I sent a Duo quote on 8/14 and it's still sitting with the managing partner. RDP is internal only, reached over the VPN.
+
+M365: Security defaults are off and Conditional Access requires MFA for all cloud apps. That covers Outlook/OWA/Teams but not the VPN.
+
+Email: Proofpoint Essentials in front of M365, with URL and attachment defense enabled.
+
+EDR: Defender for Endpoint P2 on every workstation and both servers.

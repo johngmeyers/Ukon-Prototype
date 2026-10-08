@@ -1,0 +1,25 @@
+business: birch_logistics
+carrier: carrier_a
+completed_by: Owner
+date: 2026-09-29
+answers:
+  - question_id: a1
+    answer: Yes
+  - question_id: a2
+    answer: Yes, Duo on the VPN.
+  - question_id: a3
+    answer: Yes
+  - question_id: a4
+    answer: Yes - CrowdStrike on all endpoints.
+  - question_id: a5
+    answer: Yes, we rotate USB drives offsite weekly.
+  - question_id: a6
+    answer: Yes, we test our backups regularly.
+  - question_id: a7
+    answer: 30
+  - question_id: a8
+    answer: Yes, Mimecast.
+  - question_id: a9
+    answer: Yes
+  - question_id: a10
+    answer: No, we're working on one.

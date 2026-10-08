@@ -1,0 +1,9 @@
+Acronis Cyber Protect Cloud - activity log
+Customer: Cedar Law   Exported: 2026-09-28 13:48
+
+2026-09-28 22:00:03  PLAN=Servers-Nightly    DEVICE=CEDAR-SRV01  STORAGE=Acronis Cloud (immutable storage, 14-day retention lock)  RESULT=Succeeded
+2026-09-28 22:00:05  PLAN=Servers-Nightly    DEVICE=CEDAR-SRV02  STORAGE=Acronis Cloud (immutable storage, 14-day retention lock)  RESULT=Succeeded
+2026-09-27 22:00:02  PLAN=Servers-Nightly    DEVICE=CEDAR-SRV01  STORAGE=Acronis Cloud (immutable storage, 14-day retention lock)  RESULT=Succeeded
+2026-09-27 22:00:04  PLAN=Servers-Nightly    DEVICE=CEDAR-SRV02  STORAGE=Acronis Cloud (immutable storage, 14-day retention lock)  RESULT=Succeeded with warnings
+2026-09-26 23:30:00  PLAN=M365-Mailboxes     DEVICE=M365 tenant  STORAGE=Acronis Cloud  RESULT=Succeeded
+2026-03-04 15:12:47  ACTIVITY=Recovery  DEVICE=CEDAR-SRV01  TYPE=Entire machine to test VM  RESULT=Succeeded  NOTE=Annual DR test, document management system verified by firm admin

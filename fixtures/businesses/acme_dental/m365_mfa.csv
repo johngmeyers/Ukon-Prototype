@@ -1,0 +1,15 @@
+UserPrincipalName,DisplayName,IsAdmin,MFAStatus,DefaultMethod
+ana.lopez@acmedental.example,Ana Lopez,False,Enforced,PhoneAppOTP
+ben.kim@acmedental.example,Ben Kim,False,Enforced,PhoneAppNotification
+cara.patel@acmedental.example,Cara Patel,False,Enforced,PhoneAppNotification
+dev.nguyen@acmedental.example,Dev Nguyen,False,Enforced,PhoneAppOTP
+eli.smith@acmedental.example,Eli Smith,False,Enforced,PhoneAppNotification
+fay.garcia@acmedental.example,Fay Garcia,False,Enforced,PhoneAppNotification
+gus.chen@acmedental.example,Gus Chen,False,Enforced,PhoneAppOTP
+hana.okafor@acmedental.example,Hana Okafor,False,Enforced,PhoneAppNotification
+ivan.brown@acmedental.example,Ivan Brown,False,Enforced,PhoneAppNotification
+jo.rossi@acmedental.example,Jo Rossi,False,Enforced,PhoneAppOTP
+kai.lopez@acmedental.example,Kai Lopez,False,Enforced,PhoneAppNotification
+lena.kim@acmedental.example,Lena Kim,False,Enforced,PhoneAppNotification
+admin@acmedental.example,Acme Admin,True,Enforced,PhoneAppNotification
+msp-admin@acmedental.example,MSP Admin,True,Enforced,PhoneAppNotification

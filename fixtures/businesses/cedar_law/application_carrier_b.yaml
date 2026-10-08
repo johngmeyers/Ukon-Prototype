@@ -1,0 +1,19 @@
+business: cedar_law
+carrier: carrier_b
+completed_by: Firm administrator
+date: 2026-09-30
+answers:
+  - question_id: b1
+    answer: MFA is required for email and VPN, and all admin accounts use it.
+  - question_id: b2
+    answer: Microsoft Defender for Endpoint on every workstation and server.
+  - question_id: b3
+    answer: Acronis backs up our servers nightly to immutable cloud storage. We tested a full restore in March 2026.
+  - question_id: b4
+    answer: 14 days.
+  - question_id: b5
+    answer: Yes, through Proofpoint.
+  - question_id: b6
+    answer: Annually, using KnowBe4.
+  - question_id: b7
+    answer: Yes, we have a documented incident response plan.

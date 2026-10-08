@@ -1,0 +1,19 @@
+business: birch_logistics
+carrier: carrier_b
+completed_by: Owner
+date: 2026-09-29
+answers:
+  - question_id: b1
+    answer: MFA everywhere - email, Duo on the VPN, and the admin accounts.
+  - question_id: b2
+    answer: CrowdStrike Falcon, covers all of them.
+  - question_id: b3
+    answer: Datto backs up nightly to the cloud and we rotate USB drives offsite every week. Backups are tested regularly.
+  - question_id: b4
+    answer: 30 days
+  - question_id: b5
+    answer: Yes, Mimecast.
+  - question_id: b6
+    answer: Yes, yearly.
+  - question_id: b7
+    answer: Not yet, it's in progress.

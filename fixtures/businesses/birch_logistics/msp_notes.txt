@@ -1,0 +1,9 @@
+Birch Logistics - tech notes (S. Wong, updated 2026-09-24)
+
+VPN: SonicWall NetExtender with Duo push for every user. Duo admin panel shows 100% enrolled. No RDP exposed.
+
+Email: Mimecast in front of M365. URL Protect and Attachment Protect are both on.
+
+Backups: Datto SIRIS with offsite cloud sync, plus weekly USB rotation that Dana takes home. Haven't done a test restore since we moved them to Datto in 2024. Need to schedule one, maybe in Q4.
+
+EDR: Falcon rollout mostly done. A couple of new laptops from the August hiring batch still need the agent. Remind Dana.
