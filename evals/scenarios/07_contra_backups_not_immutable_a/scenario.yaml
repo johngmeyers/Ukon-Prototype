@@ -1,0 +1,7 @@
+description: The cloud copy exists but has no object lock and the NAS is online; nothing is offline or immutable.
+category: contradiction
+base: acme_dental
+carrier: carrier_a
+expected:
+  status:
+    backups_offline_immutable: contradicted

@@ -1,0 +1,8 @@
+description: >-
+  Carrier B asks where MFA is enforced; a blanket "Yes" claims all three MFA controls.
+  The VPN has no MFA. (needs_review would also be safe; strict scoring expects contradicted.)
+category: combined_split
+base: cedar_law
+carrier: carrier_b
+answers:
+  b1: "Yes, we use MFA."

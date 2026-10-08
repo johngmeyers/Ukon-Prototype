@@ -1,0 +1,15 @@
+description: Clean business with one-word answers. Terse but unambiguous.
+category: clean
+base: acme_dental
+carrier: carrier_a
+answers:
+  a1: "Y"
+  a2: "Y"
+  a3: "Y"
+  a4: "Y, SentinelOne on all devices"
+  a5: "Y, immutable Wasabi copy"
+  a6: "Y, June 2026"
+  a7: "14"
+  a8: "Y, Defender"
+  a9: "Y"
+  a10: "Y"

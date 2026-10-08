@@ -1,0 +1,11 @@
+description: The combined backup answer covers immutability but never mentions a restore test.
+category: combined_split
+base: acme_dental
+carrier: carrier_b
+answers:
+  b3: "Nightly backups to a local NAS plus an immutable copy in Wasabi."
+expected:
+  claims:
+    backup_restore_tested: null
+  status:
+    backup_restore_tested: needs_review

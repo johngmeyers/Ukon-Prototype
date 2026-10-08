@@ -1,0 +1,11 @@
+description: The owner thinks they only have antivirus, but SentinelOne EDR is active on every device.
+category: under_report
+base: acme_dental
+carrier: carrier_a
+answers:
+  a4: "No, we just use regular antivirus."
+expected:
+  claims:
+    edr_all_endpoints: false
+  status:
+    edr_all_endpoints: supported

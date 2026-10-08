@@ -1,0 +1,11 @@
+description: '"MFA on most systems" does not say whether email is covered. A person should decide.'
+category: ambiguous
+base: acme_dental
+carrier: carrier_a
+answers:
+  a1: "MFA is on for most of our systems."
+expected:
+  claims:
+    mfa_email: unscored
+  status:
+    mfa_email: needs_review

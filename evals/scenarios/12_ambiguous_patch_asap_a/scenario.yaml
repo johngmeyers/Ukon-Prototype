@@ -1,0 +1,11 @@
+description: The patch answer gives no number of days, so the claim is null.
+category: ambiguous
+base: acme_dental
+carrier: carrier_a
+answers:
+  a7: "As soon as we can, usually pretty quickly."
+expected:
+  claims:
+    critical_patch_days: null
+  status:
+    critical_patch_days: needs_review

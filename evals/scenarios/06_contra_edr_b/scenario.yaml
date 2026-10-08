@@ -1,0 +1,7 @@
+description: One laptop never got the EDR agent (13 of 14); Carrier B answer says 100%.
+category: contradiction
+base: acme_dental
+carrier: carrier_b
+expected:
+  status:
+    edr_all_endpoints: contradicted

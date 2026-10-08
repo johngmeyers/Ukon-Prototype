@@ -1,0 +1,10 @@
+description: >-
+  The MSP admin account is MFA-registered but not enforced. One root cause, two findings:
+  the admin control fails, and so does "all accounts" for email.
+category: contradiction
+base: acme_dental
+carrier: carrier_b
+expected:
+  status:
+    mfa_privileged: contradicted
+    mfa_email: contradicted

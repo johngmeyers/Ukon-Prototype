@@ -1,0 +1,77 @@
+# Ground-truth labels for each base business in fixtures/businesses/.
+# A scenario starts from one base and lists only the labels it changes.
+#
+# claims: the value an ideal mapper extracts from the application (null = not stated).
+# status: the finding an ideal system produces for that control.
+
+acme_dental:
+  claims:
+    mfa_email: true
+    mfa_remote_access: true
+    mfa_privileged: true
+    edr_all_endpoints: true
+    backups_offline_immutable: true
+    backup_restore_tested: true
+    critical_patch_days: 14
+    email_filtering: true
+    security_awareness_training: true
+    incident_response_plan: true
+  status:
+    mfa_email: supported
+    mfa_remote_access: supported
+    mfa_privileged: supported
+    edr_all_endpoints: supported
+    backups_offline_immutable: supported
+    backup_restore_tested: supported
+    critical_patch_days: supported
+    email_filtering: supported
+    security_awareness_training: unverifiable
+    incident_response_plan: unverifiable
+
+birch_logistics:
+  claims:
+    mfa_email: true
+    mfa_remote_access: true
+    mfa_privileged: true
+    edr_all_endpoints: true
+    backups_offline_immutable: true
+    backup_restore_tested: true
+    critical_patch_days: 30
+    email_filtering: true
+    security_awareness_training: true
+    incident_response_plan: false
+  status:
+    mfa_email: supported
+    mfa_remote_access: supported
+    mfa_privileged: supported
+    edr_all_endpoints: contradicted      # 47 of 50 devices
+    backups_offline_immutable: supported # weekly USB rotation stored offsite
+    backup_restore_tested: contradicted  # no restore since 2024
+    critical_patch_days: supported
+    email_filtering: supported
+    security_awareness_training: unverifiable
+    incident_response_plan: unverifiable
+
+cedar_law:
+  claims:
+    mfa_email: true
+    mfa_remote_access: true
+    mfa_privileged: true
+    edr_all_endpoints: true
+    backups_offline_immutable: true
+    backup_restore_tested: true
+    critical_patch_days: 14
+    email_filtering: true
+    security_awareness_training: true
+    incident_response_plan: true
+  status:
+    mfa_email: supported
+    mfa_remote_access: contradicted      # SSL-VPN on local accounts, no MFA
+    mfa_privileged: supported
+    edr_all_endpoints: supported
+    backups_offline_immutable: supported
+    backup_restore_tested: supported
+    critical_patch_days: supported
+    email_filtering: supported
+    security_awareness_training: unverifiable
+    incident_response_plan: unverifiable

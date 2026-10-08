@@ -1,0 +1,7 @@
+description: Two staff mailboxes have MFA disabled; the application says everyone uses MFA for email.
+category: contradiction
+base: acme_dental
+carrier: carrier_a
+expected:
+  status:
+    mfa_email: contradicted
