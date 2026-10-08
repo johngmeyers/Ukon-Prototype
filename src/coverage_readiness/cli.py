@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 from rich.console import Console
 from rich.markdown import Markdown
 
+from coverage_readiness import config
 from coverage_readiness.llm.client import AnthropicClient, LLMClient, LLMOutputError, RunLog
 from coverage_readiness.parsers import EvidenceParseError
 from coverage_readiness.pipeline import assess
@@ -19,9 +20,9 @@ app = typer.Typer(add_completion=False, help="Check application answers against 
 console = Console()
 
 
-def make_client() -> LLMClient:
+def make_client(model: str) -> LLMClient:
     """Separate so tests can swap in a fake."""
-    return AnthropicClient()
+    return AnthropicClient(model)
 
 
 @app.callback()
@@ -41,6 +42,7 @@ def check(
     ] = None,
     output: Annotated[Path | None, typer.Option(help="Also write the markdown here.")] = None,
     runs_dir: Annotated[Path, typer.Option(help="Where the JSONL run log goes.")] = Path("runs"),
+    model: Annotated[str, typer.Option(help="Claude model ID.")] = config.MODEL,
 ) -> None:
     """Produce a readiness report for one business and one carrier application."""
     day = as_of.date() if as_of else date.today()
@@ -48,7 +50,7 @@ def check(
     try:
         with console.status(f"Assessing {business_dir.name} for {carrier}..."):
             assessment = assess(
-                business_dir, carriers_dir / f"{carrier}.yaml", make_client(), log, day
+                business_dir, carriers_dir / f"{carrier}.yaml", make_client(model), log, day
             )
     except (FileNotFoundError, EvidenceParseError, LLMOutputError) as e:
         console.print(f"[red]Error:[/red] {e}")

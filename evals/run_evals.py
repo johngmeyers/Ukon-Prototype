@@ -345,17 +345,22 @@ def main(
     application_prompt: Annotated[
         str, typer.Option(help="Prompt file stem, e.g. map_application_v1 to rerun the baseline.")
     ] = APPLICATION_PROMPT,
+    model: Annotated[str, typer.Option(help="Claude model ID to evaluate.")] = config.MODEL,
 ) -> None:
     load_dotenv()
     scenarios = [s for s in load_scenarios() if not only or only in s.id]
-    label = label or application_prompt.rsplit("_", 1)[-1]
+    if label is None:
+        label = application_prompt.rsplit("_", 1)[-1]
+        if model != config.MODEL:
+            label += "-" + model.removeprefix("claude-")
     stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
-    client = AnthropicClient()
+    client = AnthropicClient(model)
 
     all_runs = []
     for i in range(runs):
         typer.echo(f"Run {i + 1}/{runs}: {len(scenarios)} scenarios...")
-        log_dir = ROOT / "runs" / "evals" / stamp / f"run{i + 1}"
+        # Label in the path keeps concurrent evals (e.g. two models) from sharing log files.
+        log_dir = ROOT / "runs" / "evals" / f"{stamp}-{label}" / f"run{i + 1}"
         scored = run_once(scenarios, client, log_dir, workers, application_prompt)
         all_runs.append(scored)
         m = metrics(scored)
@@ -368,7 +373,7 @@ def main(
         "meta": {
             "label": label,
             "date": date.today().isoformat(),
-            "model": config.MODEL,
+            "model": model,
             "effort": config.EFFORT,
             "prompts": {"application": application_prompt, "notes": NOTES_PROMPT},
             "thresholds": config.THRESHOLDS,
