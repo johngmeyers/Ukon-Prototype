@@ -40,6 +40,10 @@ class AnthropicClient:
         self._client = client or anthropic.Anthropic()
 
     def complete(self, *, system: str, user: str, schema: dict[str, Any]) -> LLMResponse:
+        extra: dict[str, Any] = {}
+        if self.model in config.SERVER_FALLBACK_MODELS:
+            # If a safety classifier declines, the API retries on a fallback model.
+            extra = {"betas": ["server-side-fallback-2026-07-01"], "fallbacks": "default"}
         start = time.perf_counter()
         response = self._client.beta.messages.create(
             model=self.model,
@@ -50,9 +54,7 @@ class AnthropicClient:
                 "effort": config.EFFORT,
                 "format": {"type": "json_schema", "schema": schema},
             },
-            # If a safety classifier declines, the API retries on a fallback model.
-            betas=["server-side-fallback-2026-07-01"],
-            fallbacks="default",
+            **extra,
         )
         latency_ms = round((time.perf_counter() - start) * 1000)
         text = next((b.text for b in response.content if b.type == "text"), "")

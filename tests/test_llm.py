@@ -8,6 +8,7 @@ from types import SimpleNamespace
 import pytest
 import yaml
 
+from coverage_readiness import config
 from coverage_readiness.llm.client import (
     AnthropicClient,
     FakeLLMClient,
@@ -224,6 +225,31 @@ def test_read_evidence_notes_rejects_controls_not_asked_for(log):
 # --- AnthropicClient request shape (stubbed SDK, no network) ------------------
 
 
+def stub_sdk(captured: dict) -> SimpleNamespace:
+    def create(**kwargs):
+        captured.update(kwargs)
+        return SimpleNamespace(
+            model=kwargs["model"],
+            content=[SimpleNamespace(type="text", text="{}")],
+            usage=SimpleNamespace(input_tokens=1, output_tokens=1),
+            stop_reason="end_turn",
+        )
+
+    return SimpleNamespace(beta=SimpleNamespace(messages=SimpleNamespace(create=create)))
+
+
+@pytest.mark.parametrize(
+    "model, has_fallback",
+    [("claude-opus-5-5", True), ("claude-sonnet-5-5", True), ("claude-haiku-5-5", False)],
+)
+def test_refusal_fallback_only_for_models_that_support_it(model, has_fallback):
+    captured = {}
+    AnthropicClient(model, client=stub_sdk(captured)).complete(system="s", user="u", schema={})
+    assert captured["model"] == model
+    assert ("fallbacks" in captured) == has_fallback
+    assert ("betas" in captured) == has_fallback
+
+
 def test_anthropic_client_sends_schema_constrained_request():
     captured = {}
 
@@ -241,7 +267,7 @@ def test_anthropic_client_sends_schema_constrained_request():
 
     assert response.text == "{}"
     assert (response.input_tokens, response.output_tokens) == (120, 30)
-    assert captured["model"] == "claude-opus-5-5"
+    assert captured["model"] == config.MODEL
     assert captured["output_config"]["format"] == {
         "type": "json_schema",
         "schema": {"type": "object"},

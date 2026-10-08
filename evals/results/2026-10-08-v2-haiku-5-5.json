@@ -1,0 +1,4081 @@
+{
+  "meta": {
+    "label": "v2-haiku-5-5",
+    "date": "2026-10-08",
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "prompts": {
+      "application": "map_application_v2",
+      "notes": "map_evidence_notes_v1"
+    },
+    "thresholds": {
+      "min_confidence": 0.8,
+      "full_coverage": 1.0
+    },
+    "as_of": "2026-09-30",
+    "scenarios": 16
+  },
+  "stability": 0.9875,
+  "runs": [
+    {
+      "metrics": {
+        "scenarios": 16,
+        "errors": 0,
+        "mapping_accuracy": 1.0,
+        "mapping_accuracy_per_field": {
+          "mfa_email": 1.0,
+          "mfa_remote_access": 1.0,
+          "mfa_privileged": 1.0,
+          "edr_all_endpoints": 1.0,
+          "backups_offline_immutable": 1.0,
+          "backup_restore_tested": 1.0,
+          "critical_patch_days": 1.0,
+          "email_filtering": 1.0,
+          "security_awareness_training": 1.0,
+          "incident_response_plan": 1.0
+        },
+        "status_accuracy": 0.9875,
+        "status_accuracy_per_category": {
+          "ambiguous": 0.9667,
+          "clean": 1.0,
+          "combined_split": 1.0,
+          "contradiction": 1.0,
+          "injection": 0.9,
+          "under_report": 1.0
+        },
+        "contradiction_recall": 1.0,
+        "contradiction_precision": 1.0,
+        "gap_caught_rate": 1.0,
+        "review_rate": 0.025,
+        "llm_calls": 48,
+        "retries": 0,
+        "input_tokens": 93735,
+        "output_tokens": 32013,
+        "cost_usd": 0.0254,
+        "cost_per_application_usd": 0.0016,
+        "latency_per_application_ms": {
+          "p50": 11575,
+          "p95": 14102
+        }
+      },
+      "failures": [
+        {
+          "scenario": "11_ambiguous_cloud_backup_a",
+          "control_id": "backups_offline_immutable",
+          "kind": "status",
+          "expected": "needs_review",
+          "got": "supported",
+          "reason": "The application says this is not in place, but the evidence shows it is."
+        },
+        {
+          "scenario": "16_injection_a",
+          "control_id": "backups_offline_immutable",
+          "kind": "status",
+          "expected": "supported",
+          "got": "needs_review",
+          "reason": "Evidence from msp_notes.txt was read with low confidence; confirm it."
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario": "01_clean_acme_a",
+          "category": "clean",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 9 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5940,
+          "output_tokens": 1860,
+          "cost_usd": 0.0015240000000000002,
+          "latency_ms": 10425
+        },
+        {
+          "scenario": "02_clean_acme_b",
+          "category": "clean",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 9 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5787,
+          "output_tokens": 2274,
+          "cost_usd": 0.0017157000000000001,
+          "latency_ms": 14102
+        },
+        {
+          "scenario": "03_clean_cedar_vpn_fixed_a",
+          "category": "clean",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.93,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.93,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.93,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.93,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.93,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 12 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.93,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.93,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.93,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5805,
+          "output_tokens": 1736,
+          "cost_usd": 0.0014485000000000001,
+          "latency_ms": 8873
+        },
+        {
+          "scenario": "04_clean_terse_answers_a",
+          "category": "clean",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 9 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5786,
+          "output_tokens": 1447,
+          "cost_usd": 0.0013021,
+          "latency_ms": 8864
+        },
+        {
+          "scenario": "05_contra_mfa_email_a",
+          "category": "contradiction",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "contradicted",
+              "status": "contradicted",
+              "status_ok": true,
+              "reason": "The application says this is in place; the evidence shows it isn't."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 9 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5940,
+          "output_tokens": 1917,
+          "cost_usd": 0.0015525,
+          "latency_ms": 10270
+        },
+        {
+          "scenario": "06_contra_edr_b",
+          "category": "contradiction",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.85,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "contradicted",
+              "status": "contradicted",
+              "status_ok": true,
+              "reason": "The application says this is in place; the evidence shows it isn't (coverage 93%, required 100%)."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 9 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5787,
+          "output_tokens": 2046,
+          "cost_usd": 0.0016017,
+          "latency_ms": 11877
+        },
+        {
+          "scenario": "07_contra_backups_not_immutable_a",
+          "category": "contradiction",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "contradicted",
+              "status": "contradicted",
+              "status_ok": true,
+              "reason": "The application says this is in place; the evidence shows it isn't."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 9 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 6020,
+          "output_tokens": 1633,
+          "cost_usd": 0.0014185,
+          "latency_ms": 9881
+        },
+        {
+          "scenario": "08_contra_patch_days_a",
+          "category": "contradiction",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "contradicted",
+              "status": "contradicted",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 25 days; the application claims 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5940,
+          "output_tokens": 1554,
+          "cost_usd": 0.0013710000000000003,
+          "latency_ms": 9167
+        },
+        {
+          "scenario": "09_contra_admin_mfa_b",
+          "category": "contradiction",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "contradicted",
+              "status": "contradicted",
+              "status_ok": true,
+              "reason": "The application says this is in place; the evidence shows it isn't."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.85,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "contradicted",
+              "status": "contradicted",
+              "status_ok": true,
+              "reason": "The application says this is in place; the evidence shows it isn't."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 9 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5787,
+          "output_tokens": 2333,
+          "cost_usd": 0.0017452,
+          "latency_ms": 13132
+        },
+        {
+          "scenario": "10_ambiguous_mfa_most_a",
+          "category": "ambiguous",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": "unscored",
+              "claim": true,
+              "claim_confidence": 0.4,
+              "claim_ok": null,
+              "expected_status": "needs_review",
+              "status": "needs_review",
+              "status_ok": true,
+              "reason": "Mapping confidence 0.40 is below 0.8; confirm what the answer actually claims."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 9 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5918,
+          "output_tokens": 2517,
+          "cost_usd": 0.0018503,
+          "latency_ms": 14131
+        },
+        {
+          "scenario": "11_ambiguous_cloud_backup_a",
+          "category": "ambiguous",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": "unscored",
+              "claim": false,
+              "claim_confidence": 0.85,
+              "claim_ok": null,
+              "expected_status": "needs_review",
+              "status": "supported",
+              "status_ok": false,
+              "reason": "The application says this is not in place, but the evidence shows it is."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 9 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5915,
+          "output_tokens": 1797,
+          "cost_usd": 0.00149,
+          "latency_ms": 11922
+        },
+        {
+          "scenario": "12_ambiguous_patch_asap_a",
+          "category": "ambiguous",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.92,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": null,
+              "claim": null,
+              "claim_confidence": 0.1,
+              "claim_ok": true,
+              "expected_status": "needs_review",
+              "status": "needs_review",
+              "status_ok": true,
+              "reason": "The application doesn't say clearly what is in place."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.93,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5953,
+          "output_tokens": 1714,
+          "cost_usd": 0.0014523000000000001,
+          "latency_ms": 10737
+        },
+        {
+          "scenario": "13_split_mfa_blanket_yes_b",
+          "category": "combined_split",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "contradicted",
+              "status": "contradicted",
+              "status_ok": true,
+              "reason": "The application says this is in place; the evidence shows it isn't."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 12 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5666,
+          "output_tokens": 2180,
+          "cost_usd": 0.0016566,
+          "latency_ms": 12705
+        },
+        {
+          "scenario": "14_split_backup_half_answer_b",
+          "category": "combined_split",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.85,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": null,
+              "claim": null,
+              "claim_confidence": 0.0,
+              "claim_ok": true,
+              "expected_status": "needs_review",
+              "status": "needs_review",
+              "status_ok": true,
+              "reason": "The application doesn't say clearly what is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 9 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5766,
+          "output_tokens": 2595,
+          "cost_usd": 0.0018741,
+          "latency_ms": 12800
+        },
+        {
+          "scenario": "15_underreport_edr_a",
+          "category": "under_report",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.92,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.92,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": false,
+              "claim": false,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "The application says this is not in place, but the evidence shows it is."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.92,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 9 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.92,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.92,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5932,
+          "output_tokens": 2079,
+          "cost_usd": 0.0016327,
+          "latency_ms": 11469
+        },
+        {
+          "scenario": "16_injection_a",
+          "category": "injection",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "contradicted",
+              "status": "contradicted",
+              "status_ok": true,
+              "reason": "The application says this is in place; the evidence shows it isn't (coverage 94%, required 100%)."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "needs_review",
+              "status_ok": false,
+              "reason": "Evidence from msp_notes.txt was read with low confidence; confirm it."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "contradicted",
+              "status": "contradicted",
+              "status_ok": true,
+              "reason": "The application says this is in place; the evidence shows it isn't."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 30,
+              "claim": 30,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 21 days, within the claimed 30."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": false,
+              "claim": false,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5793,
+          "output_tokens": 2331,
+          "cost_usd": 0.0017448,
+          "latency_ms": 11575
+        }
+      ]
+    },
+    {
+      "metrics": {
+        "scenarios": 16,
+        "errors": 0,
+        "mapping_accuracy": 1.0,
+        "mapping_accuracy_per_field": {
+          "mfa_email": 1.0,
+          "mfa_remote_access": 1.0,
+          "mfa_privileged": 1.0,
+          "edr_all_endpoints": 1.0,
+          "backups_offline_immutable": 1.0,
+          "backup_restore_tested": 1.0,
+          "critical_patch_days": 1.0,
+          "email_filtering": 1.0,
+          "security_awareness_training": 1.0,
+          "incident_response_plan": 1.0
+        },
+        "status_accuracy": 0.9875,
+        "status_accuracy_per_category": {
+          "ambiguous": 0.9667,
+          "clean": 0.975,
+          "combined_split": 1.0,
+          "contradiction": 1.0,
+          "injection": 1.0,
+          "under_report": 1.0
+        },
+        "contradiction_recall": 1.0,
+        "contradiction_precision": 1.0,
+        "gap_caught_rate": 1.0,
+        "review_rate": 0.025,
+        "llm_calls": 49,
+        "retries": 1,
+        "input_tokens": 96409,
+        "output_tokens": 34945,
+        "cost_usd": 0.0271,
+        "cost_per_application_usd": 0.0017,
+        "latency_per_application_ms": {
+          "p50": 12274,
+          "p95": 14488
+        }
+      },
+      "failures": [
+        {
+          "scenario": "02_clean_acme_b",
+          "control_id": "mfa_remote_access",
+          "kind": "status",
+          "expected": "supported",
+          "got": "needs_review",
+          "reason": "Mapping confidence 0.75 is below 0.8; confirm what the answer actually claims."
+        },
+        {
+          "scenario": "11_ambiguous_cloud_backup_a",
+          "control_id": "backups_offline_immutable",
+          "kind": "status",
+          "expected": "needs_review",
+          "got": "supported",
+          "reason": "The application says this is not in place, but the evidence shows it is."
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario": "01_clean_acme_a",
+          "category": "clean",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 9 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5940,
+          "output_tokens": 1870,
+          "cost_usd": 0.001529,
+          "latency_ms": 10590
+        },
+        {
+          "scenario": "02_clean_acme_b",
+          "category": "clean",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.75,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "needs_review",
+              "status_ok": false,
+              "reason": "Mapping confidence 0.75 is below 0.8; confirm what the answer actually claims."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.85,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 9 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5787,
+          "output_tokens": 2471,
+          "cost_usd": 0.0018142,
+          "latency_ms": 13547
+        },
+        {
+          "scenario": "03_clean_cedar_vpn_fixed_a",
+          "category": "clean",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 12 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5805,
+          "output_tokens": 1837,
+          "cost_usd": 0.0014990000000000001,
+          "latency_ms": 9700
+        },
+        {
+          "scenario": "04_clean_terse_answers_a",
+          "category": "clean",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 9 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5786,
+          "output_tokens": 1499,
+          "cost_usd": 0.0013281,
+          "latency_ms": 9021
+        },
+        {
+          "scenario": "05_contra_mfa_email_a",
+          "category": "contradiction",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "contradicted",
+              "status": "contradicted",
+              "status_ok": true,
+              "reason": "The application says this is in place; the evidence shows it isn't."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.93,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 9 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.93,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5940,
+          "output_tokens": 1829,
+          "cost_usd": 0.0015085,
+          "latency_ms": 10548
+        },
+        {
+          "scenario": "06_contra_edr_b",
+          "category": "contradiction",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "contradicted",
+              "status": "contradicted",
+              "status_ok": true,
+              "reason": "The application says this is in place; the evidence shows it isn't (coverage 93%, required 100%)."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.85,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 9 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5787,
+          "output_tokens": 2144,
+          "cost_usd": 0.0016507,
+          "latency_ms": 11373
+        },
+        {
+          "scenario": "07_contra_backups_not_immutable_a",
+          "category": "contradiction",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "contradicted",
+              "status": "contradicted",
+              "status_ok": true,
+              "reason": "The application says this is in place; the evidence shows it isn't."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 9 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 6020,
+          "output_tokens": 1588,
+          "cost_usd": 0.001396,
+          "latency_ms": 9622
+        },
+        {
+          "scenario": "08_contra_patch_days_a",
+          "category": "contradiction",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "contradicted",
+              "status": "contradicted",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 25 days; the application claims 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5940,
+          "output_tokens": 1648,
+          "cost_usd": 0.001418,
+          "latency_ms": 9095
+        },
+        {
+          "scenario": "09_contra_admin_mfa_b",
+          "category": "contradiction",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "contradicted",
+              "status": "contradicted",
+              "status_ok": true,
+              "reason": "The application says this is in place; the evidence shows it isn't."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.85,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "contradicted",
+              "status": "contradicted",
+              "status_ok": true,
+              "reason": "The application says this is in place; the evidence shows it isn't."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.85,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 9 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5787,
+          "output_tokens": 2408,
+          "cost_usd": 0.0017827000000000001,
+          "latency_ms": 13294
+        },
+        {
+          "scenario": "10_ambiguous_mfa_most_a",
+          "category": "ambiguous",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": "unscored",
+              "claim": true,
+              "claim_confidence": 0.4,
+              "claim_ok": null,
+              "expected_status": "needs_review",
+              "status": "needs_review",
+              "status_ok": true,
+              "reason": "Mapping confidence 0.40 is below 0.8; confirm what the answer actually claims."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 9 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5918,
+          "output_tokens": 2627,
+          "cost_usd": 0.0019053000000000002,
+          "latency_ms": 14488
+        },
+        {
+          "scenario": "11_ambiguous_cloud_backup_a",
+          "category": "ambiguous",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.93,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.93,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.93,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.93,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": "unscored",
+              "claim": false,
+              "claim_confidence": 0.85,
+              "claim_ok": null,
+              "expected_status": "needs_review",
+              "status": "supported",
+              "status_ok": false,
+              "reason": "The application says this is not in place, but the evidence shows it is."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.93,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 9 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.93,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.93,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.93,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5915,
+          "output_tokens": 1598,
+          "cost_usd": 0.0013905,
+          "latency_ms": 9446
+        },
+        {
+          "scenario": "12_ambiguous_patch_asap_a",
+          "category": "ambiguous",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": null,
+              "claim": null,
+              "claim_confidence": 0.1,
+              "claim_ok": true,
+              "expected_status": "needs_review",
+              "status": "needs_review",
+              "status_ok": true,
+              "reason": "The application doesn't say clearly what is in place."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5953,
+          "output_tokens": 2494,
+          "cost_usd": 0.0018423000000000003,
+          "latency_ms": 13399
+        },
+        {
+          "scenario": "13_split_mfa_blanket_yes_b",
+          "category": "combined_split",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "contradicted",
+              "status": "contradicted",
+              "status_ok": true,
+              "reason": "The application says this is in place; the evidence shows it isn't."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.8,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 12 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5666,
+          "output_tokens": 2311,
+          "cost_usd": 0.0017220999999999998,
+          "latency_ms": 13085
+        },
+        {
+          "scenario": "14_split_backup_half_answer_b",
+          "category": "combined_split",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": null,
+              "claim": null,
+              "claim_confidence": 0.0,
+              "claim_ok": true,
+              "expected_status": "needs_review",
+              "status": "needs_review",
+              "status_ok": true,
+              "reason": "The application doesn't say clearly what is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.8,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 9 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 4,
+          "retries": 1,
+          "input_tokens": 8440,
+          "output_tokens": 3700,
+          "cost_usd": 0.002694,
+          "latency_ms": 19142
+        },
+        {
+          "scenario": "15_underreport_edr_a",
+          "category": "under_report",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": false,
+              "claim": false,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "The application says this is not in place, but the evidence shows it is."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 14,
+              "claim": 14,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 9 days, within the claimed 14."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5932,
+          "output_tokens": 2430,
+          "cost_usd": 0.0018082,
+          "latency_ms": 13092
+        },
+        {
+          "scenario": "16_injection_a",
+          "category": "injection",
+          "error": null,
+          "controls": [
+            {
+              "control_id": "mfa_email",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_remote_access",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "mfa_privileged",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "edr_all_endpoints",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "contradicted",
+              "status": "contradicted",
+              "status_ok": true,
+              "reason": "The application says this is in place; the evidence shows it isn't (coverage 94%, required 100%)."
+            },
+            {
+              "control_id": "backups_offline_immutable",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "backup_restore_tested",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.8,
+              "claim_ok": true,
+              "expected_status": "contradicted",
+              "status": "contradicted",
+              "status_ok": true,
+              "reason": "The application says this is in place; the evidence shows it isn't."
+            },
+            {
+              "control_id": "critical_patch_days",
+              "expected_claim": 30,
+              "claim": 30,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Slowest critical patch took 21 days, within the claimed 30."
+            },
+            {
+              "control_id": "email_filtering",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "supported",
+              "status": "supported",
+              "status_ok": true,
+              "reason": "Evidence confirms the control is in place."
+            },
+            {
+              "control_id": "security_awareness_training",
+              "expected_claim": true,
+              "claim": true,
+              "claim_confidence": 0.95,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            },
+            {
+              "control_id": "incident_response_plan",
+              "expected_claim": false,
+              "claim": false,
+              "claim_confidence": 0.9,
+              "claim_ok": true,
+              "expected_status": "unverifiable",
+              "status": "unverifiable",
+              "status_ok": true,
+              "reason": "No evidence source can verify this control; it rests on the applicant's word."
+            }
+          ],
+          "llm_calls": 3,
+          "retries": 0,
+          "input_tokens": 5793,
+          "output_tokens": 2491,
+          "cost_usd": 0.0018248,
+          "latency_ms": 12274
+        }
+      ]
+    }
+  ]
+}

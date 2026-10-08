@@ -57,7 +57,7 @@ def birch_replies() -> list[str]:
 @pytest.fixture
 def fake(monkeypatch) -> FakeLLMClient:
     client = FakeLLMClient(birch_replies(), model="claude-opus-5-5")
-    monkeypatch.setattr(cli, "make_client", lambda: client)
+    monkeypatch.setattr(cli, "make_client", lambda model: client)
     return client
 
 
